@@ -6,7 +6,10 @@ const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 const { ObjectId } = require("mongodb");
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: ['http://localhost:5173/' ],
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const dbName="VIC-Database";
@@ -54,7 +57,7 @@ app.get("/bookingData", async (req, res) => {
   }
 });
 // Start the server
-const port = process.env.PORT || 3000;
+const port =  3000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
