@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 const dbName="VIC-Database";
 const client = new MongoClient(
-  "mongodb+srv://heroreal5385:a1ULx6FEqKAd464z@cluster0.hxp3a.mongodb.net/"
+  "mongodb+srv://heroreal5385:a1ULx6FEqKAd464z@cluster0.hxp3a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 );
 
 async function connectToMongo() {
