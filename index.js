@@ -5,9 +5,10 @@ const bodyParser = require("body-parser");
 
 const { MongoClient } = require("mongodb");
 const { ObjectId } = require("mongodb");
+app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.json());
+
 const dbName="VIC-Database";
 const client = new MongoClient(
   "mongodb+srv://heroreal5385:a1ULx6FEqKAd464z@cluster0.hxp3a.mongodb.net/"
