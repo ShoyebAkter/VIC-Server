@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+const nodemailer = require("nodemailer");
 const { MongoClient } = require("mongodb");
 const { ObjectId } = require("mongodb");
 app.use(express.json());
@@ -52,6 +52,43 @@ app.get("/bookingData", async (req, res) => {
   } catch (error) {
     console.error("Error fetching data from MongoDB:", error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post("/sendBookingemail", async (req, res) => {
+  const { email,name,contact,date,time,car,service } =
+    req.body;
+  // console.log(req.body);
+  try {
+    await nodemailer
+      .createTransport({
+        service: "gmail",
+        port: 587,
+        secure: false, // upgrade later with STARTTLS
+        auth: {
+          user: "heroreal5385@gmail.com",
+        pass: "ybgc fpop npch sgbp",
+         
+        },
+      })
+      .sendMail({
+        from: "heroreal5385@gmail.com",
+        to: email,
+        subject: "Booking Email",
+        html: `<div>
+      <div>Thank you for your booking ${name}</div>
+      <p>Name: ${name}</p>
+      <p>Contact: ${contact}</p>
+      <p>Date: ${date}</p>
+      <p>Time: ${time}</p>
+      <p>Car Model: ${car}</p>
+      <p>Service: ${service}</p>
+      </div>`,
+      });
+
+    res.status(200).json({ message: "Email sent successfully." });
+  } catch (error) {
+    console.log(error);
   }
 });
 // Start the server
