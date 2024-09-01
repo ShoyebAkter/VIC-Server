@@ -29,14 +29,15 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 app.post("/bookingData", async (req, res) => {
-  const { name,email,contact,date,car,service } = req.body;
+  const { name,email,contact,date,car,service,time } = req.body;
   const bookingInfo = {
     name: name,
     email: email,
     contact:contact,
     date: date,
     car:car,
-    service:service
+    service:service,
+    time:time
   };
   const db = client.db(dbName);
   const collection = db.collection("BookingData");
@@ -89,6 +90,30 @@ app.post("/sendBookingemail", async (req, res) => {
     res.status(200).json({ message: "Email sent successfully." });
   } catch (error) {
     console.log(error);
+  }
+});
+
+app.post("/deleteBooking", async (req, res) => {
+  const { id } = req.body; // Get the id from the request body
+
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection("BookingData");
+
+    // Update the booking document by setting the action to "deleted"
+    const result = await collection.updateOne(
+      { _id: new ObjectId(id) }, // Filter by the document's _id
+      { $set: { action: "deleted" } } // Set the action to "deleted"
+    );
+
+    if (result.modifiedCount > 0) {
+      res.status(200).json({ message: "Booking marked as deleted." });
+    } else {
+      res.status(404).json({ message: "Booking not found." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "An error occurred while deleting the booking." });
   }
 });
 // Start the server
