@@ -77,13 +77,46 @@ app.post("/sendBookingemail", async (req, res) => {
         to: email,
         subject: "Booking Email",
         html: `<div>
-      <div>Thank you for your booking ${name}</div>
-      <p>Name: ${name}</p>
-      <p>Contact: ${contact}</p>
+      <div>Your Booking In VIL</div>
+      <p>Dear ${name},</p>
+      <p>We hope you are doing well. Thank you for choosing us.</p>
+      <div>BOOKING DETAILS</div>
+      <p>Client: ${name}</p>
+      <p>Contact Number: ${contact}</p>
       <p>Date: ${date}</p>
       <p>Time: ${time}</p>
       <p>Car Model: ${car}</p>
       <p>Service: ${service}</p>
+      </div>`,
+      });
+
+    res.status(200).json({ message: "Email sent successfully." });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.post("/sendThanksemail", async (req, res) => {
+  const { email } =
+    req.body;
+  // console.log(req.body);
+  try {
+    await nodemailer
+      .createTransport({
+        service: "gmail",
+        port: 587,
+        secure: false, // upgrade later with STARTTLS
+        auth: {
+          user: "heroreal5385@gmail.com",
+        pass: "ybgc fpop npch sgbp",
+         
+        },
+      })
+      .sendMail({
+        from: "heroreal5385@gmail.com",
+        to: email,
+        subject: "Thanks giving email",
+        html: `<div>
+      <div>Thank you for your booking.Hope to see you again.</div>
       </div>`,
       });
 
