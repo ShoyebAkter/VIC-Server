@@ -29,15 +29,16 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 app.post("/bookingData", async (req, res) => {
-  const { name,email,contact,date,car,service,time } = req.body;
+  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email } = req.body;
   const bookingInfo = {
     name: name,
     email: email,
-    contact:contact,
-    date: date,
-    car:car,
-    service:service,
-    time:time
+    selectedCenter:selectedCenter,
+    date: startDate,
+    time: time,
+    plateNo:plateNo,
+    brand:brand,
+    selectedServices:selectedServices
   };
   const db = client.db(dbName);
   const collection = db.collection("BookingData");
@@ -59,7 +60,7 @@ app.get("/bookingData", async (req, res) => {
 
 
 app.post("/sendBookingemail", async (req, res) => {
-  const { email,name,contact,date,time,car,service } =
+  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email } =
     req.body;
   // console.log(req.body);
   try {
@@ -283,11 +284,11 @@ as your&nbsp; &nbsp;car service operator, we hope you will be most satisfied wit
 your upcoming&nbsp; &nbsp;maintenance service. Here are your booking details:
 </div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Name</span> : ${name}</div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Contact</span> : ${contact}</div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Date</span> :${date}&nbsp;</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Center</span> : ${selectedCenter}</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Date</span> :${startDate}&nbsp;</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Time</span> : ${time}</div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car model</span>: ${car}</div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Service</span> : ${service}</div></div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Plate No :</span>: ${plateNo}</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Brand :</span> : ${brand}</div></div>
 
     
                 </td>
