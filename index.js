@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 app.post("/bookingData", async (req, res) => {
-  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email } = req.body;
+  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email,carModel, year } = req.body;
   const bookingInfo = {
     name: name,
     email: email,
@@ -38,7 +38,9 @@ app.post("/bookingData", async (req, res) => {
     time: time,
     plateNo:plateNo,
     brand:brand,
-    selectedServices:selectedServices
+    selectedServices:selectedServices,
+    carModel:carModel,
+    year:year
   };
   const db = client.db(dbName);
   const collection = db.collection("BookingData");
@@ -289,6 +291,8 @@ your upcoming&nbsp; &nbsp;maintenance service. Here are your booking details:
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Time</span> : ${time}</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Plate No :</span>: ${plateNo}</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Brand :</span> : ${brand}</div></div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Model :</span> : ${carModel}</div></div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Year :</span> : ${year}</div></div>
 
     
                 </td>
