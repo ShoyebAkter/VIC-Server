@@ -62,7 +62,7 @@ app.get("/bookingData", async (req, res) => {
 
 
 app.post("/sendBookingemail", async (req, res) => {
-  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email } =
+  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email,carModel,year } =
     req.body;
   // console.log(req.body);
   try {
@@ -289,10 +289,10 @@ your upcoming&nbsp; &nbsp;maintenance service. Here are your booking details:
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Center</span> : ${selectedCenter}</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Date</span> :${startDate}&nbsp;</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Time</span> : ${time}</div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Plate No :</span>: ${plateNo}</div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Brand :</span> : ${brand}</div></div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Model :</span> : ${carModel}</div></div>
-<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Year :</span> : ${year}</div></div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Plate No :</span> ${plateNo}</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Brand :</span>  ${brand}</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Model :</span>  ${carModel}</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Car Year :</span>  ${year}</div>
 
     
                 </td>
