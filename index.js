@@ -41,7 +41,8 @@ app.post("/bookingData", async (req, res) => {
     selectedServices:selectedServices,
     carModel:carModel,
     year:year,
-    phoneNum:phoneNum
+    phoneNum:phoneNum,
+    userLocation:userLocation
   };
   const db = client.db(dbName);
   const collection = db.collection("BookingData");
