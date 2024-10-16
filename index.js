@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 app.post("/bookingData", async (req, res) => {
-  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email,carModel, year } = req.body;
+  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email,carModel, year,phoneNum } = req.body;
   const bookingInfo = {
     name: name,
     email: email,
@@ -40,7 +40,8 @@ app.post("/bookingData", async (req, res) => {
     brand:brand,
     selectedServices:selectedServices,
     carModel:carModel,
-    year:year
+    year:year,
+    phoneNum:phoneNum
   };
   const db = client.db(dbName);
   const collection = db.collection("BookingData");
@@ -62,7 +63,7 @@ app.get("/bookingData", async (req, res) => {
 
 
 app.post("/sendBookingemail", async (req, res) => {
-  const { selectedCenter, startDate, time, plateNo, brand, selectedServices, name, email,carModel,year } =
+  const { selectedCenter, startDate, time, plateNo, brand, phoneNum, name, email,carModel,year } =
     req.body;
   // console.log(req.body);
   try {
@@ -286,6 +287,7 @@ as your&nbsp; &nbsp;car service operator, we hope you will be most satisfied wit
 your upcoming&nbsp; &nbsp;maintenance service. Here are your booking details:
 </div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Name</span> : ${name}</div>
+<div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Name</span> : ${phoneNum}</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Center</span> : ${selectedCenter}</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Date</span> :${startDate}&nbsp;</div>
 <div style="color:#000000;text-align:center;">&nbsp; <span style="font-weight:700;">Time</span> : ${time}</div>
