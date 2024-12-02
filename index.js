@@ -160,7 +160,7 @@ app.post("/sendBookingemail", async (req, res) => {
               <td
                  style="border:none;direction:ltr;font-size:0px;padding:20px 0px 20px 0px;text-align:center;"
               >
-                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0;font-size:0;mso-line-height-rule:exactly;"><v:image style="border:0;mso-position-horizontal:center;position:absolute;top:0;width:600px;z-index:-3;" src="https://i.ibb.co.com/RbTVDv5/6391f36eacbd.png" xmlns:v="urn:schemas-microsoft-com:vml" /><![endif]-->
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" width="600px" ><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0;font-size:0;mso-line-height-rule:exactly;"><v:image style="border:0;mso-position-horizontal:center;position:absolute;top:0;width:600px;z-index:-3;" src="https://i.ibb.co.com/t3r6gJ2/logo1.png" xmlns:v="urn:schemas-microsoft-com:vml" /><![endif]-->
       <div
          style="margin:0 auto;max-width:600px;"
       >
